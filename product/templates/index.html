@@ -1,0 +1,117 @@
+{% extends 'layouts/base.html' %}
+{% block content %}
+  <div id="starting">
+      <h2>Products</h2>
+      <button  type="button" class="btn btn-success" data-toggle="modal" data-target="#addProductModal"><i class="fa fa-plus"></i> Product</button>
+      <div class="search-right">
+        <form method="GET" action="">
+          <input class="form-control mr-sm-2" type="text" placeholder="Search" v-model="search_term" aria-label="Search">
+          <button type="submit" class="btn btn-primary" v-on:click.prevent="getProducts()"><i class="fa fa-search"></i></button>
+        </form>
+      </div>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Category</th>
+            <th scope="col">Price</th>
+            <th scope="col" class="text-center">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="product in products">
+            <th scope="row">${product.id}</th>
+            <td>${product.name}</td>
+            <td>${product.category}</td>
+            <td>${product.price}</td>
+            <td class="col-actions">
+              <button class="btn btn-primary" v-on:click="getProduct(product.id)"><i class="fa fa-edit"></i> Edit</button>
+              <button class="btn btn-danger" v-on:click="deleteProduct(product.id)"><i class="fa fa-trash"></i> Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- Add Product Modal -->
+      <div class="modal fade" id="addProductModal" tabindex="-1" role="dialog" aria-labelledby="modalTitle" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3 class="modal-title" id="modalTitle">Add Product</h3>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <form v-on:submit.prevent="addProduct()">
+            <div class="modal-body">
+              <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name" placeholder="Name" v-model="newProduct.name" required="required">
+              </div>
+              <div class="form-group">
+                <label for="category">Category</label>
+                <input type="text" class="form-control" id="category" placeholder="Category" v-model="newProduct.category" required="required">
+              </div>
+              <div class="form-group">
+                <label for="price">Price</label>
+                <input type="text" class="form-control" id="price" placeholder="Price" v-model="newProduct.price" required="required">
+              </div>
+              <div class="form-group">
+                <label for="description">Description</label>
+                <textarea class="form-control" id="description" placeholder="Description" v-model="newProduct.description" rows="3"></textarea>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-close"></i> Close</button>
+              <button type="submit" class="btn btn-success"><i class="fa fa-hdd-o"></i> Save</button>
+            </div>
+            </form>
+          </div>
+        </div>
+        <div class="loading" v-if="loading===true">Loading&#8230;</div>
+      </div>
+      <!-- End of add article modal -->
+
+      <!-- Edit Product Modal -->
+      <div class="modal fade" id="editProductModal" tabindex="-1" role="dialog" aria-labelledby="modalTitle" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3 class="modal-title" id="modalTitle">Edit Product</h3>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <form v-on:submit.prevent="updateProduct()">
+            <div class="modal-body">
+              <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name" placeholder="Name" v-model="currentProduct.name" required="required">
+              </div>
+              <div class="form-group">
+                <label for="category">Category</label>
+                <input type="text" class="form-control" id="category" placeholder="Category" v-model="currentProduct.category" required="required">
+              </div>
+              <div class="form-group">
+                <label for="price">Price</label>
+                <input type="text" class="form-control" id="price" placeholder="Price" v-model="currentProduct.price" required="required">
+              </div>
+              <div class="form-group">
+                <label for="description">Description</label>
+                <textarea class="form-control" id="description" placeholder="Description" v-model="currentProduct.description" rows="3"></textarea>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-close"></i> Close</button>
+              <button type="submit" class="btn btn-success"><i class="fa fa-hdd-o"></i> Save</button>
+            </div>
+            </form>
+          </div>
+        </div>
+        <div class="loading" v-if="loading===true">Loading&#8230;</div>
+      </div>
+      <!-- End of edit article modal -->
+    <div class="loading" v-if="loading===true">Loading&#8230;</div>
+  </div>
+{% endblock %}

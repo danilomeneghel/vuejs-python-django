@@ -1,0 +1,74 @@
+{% load static from staticfiles %}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link type="text/css" rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+	<link type="text/css" rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+	<link type="text/css" rel="stylesheet" href="{% static 'css/pagination.css' %}">
+	<link type="text/css" rel="stylesheet" href="{% static 'css/style.css' %}">
+  <title>Django VueJS</title>
+</head>
+<body>
+    <nav class="navbar navbar-default navbar-static-top">
+      <div class="container-header">
+        <div class="navbar-header">
+          <!-- Collapsed Hamburger -->
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
+            <span class="sr-only">Toggle Navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+
+          <!-- Branding Image -->
+          <a class="navbar-brand" href="/product">
+            <strong>Django VueJS</strong>
+          </a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="app-navbar-collapse">
+          <!-- Left Side Of Navbar -->
+          <!-- <ul class="nav navbar-nav">
+            <li class="nav-item">Link1</li>
+            <li class="nav-item">Link2</li>
+            <li class="nav-item">Link3</li>
+          </ul> -->
+
+          <!-- Right Side Of Navbar -->
+          <ul class="nav navbar-nav navbar-right">
+            <!-- Authentication Links -->
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                    <img src="{% static 'img/avatar-placeholder.svg' %}" alt="" width="30" class="img-circle">
+                    {{ user.get_username }} <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a href="{% url 'users:update_user' 1 %}">Profile</a></li>
+                    <li><a href="{% url 'users:logout' %}">Logout</a></li>
+                </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container-fluid">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+    <script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/popper.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/vue.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/vue-resource.js' %}"></script>
+
+    <script type="text/javascript">
+        Vue.http.headers.common['X-CSRFToken'] = "{{ csrf_token }}";
+    </script>
+    <script type="text/javascript" src="{% static 'js/app.js' %}"></script>
+
+</body>
+</html>

@@ -1,0 +1,18 @@
+{% extends 'layouts/base.html' %}
+{% load bootstrap %}
+{% block content %}
+	<h2>Profile</h2>
+
+  <div class="panel panel-default">
+  	<div class="panel-body">
+  		<div class="container-form col-sm-5">
+        <form method="POST" novalidate>
+            {% csrf_token %}
+            {{ form|bootstrap }}
+            <a href="/product" class="btn btn-outline-secondary"><i class="fa fa-arrow-left"></i> Back</a>
+    				<button type="submit" class="btn btn-success"><i class="fa fa-hdd-o"></i> Save</button>
+        </form>
+      </div>
+    </div>
+  </div>
+{% endblock %}

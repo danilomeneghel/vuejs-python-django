@@ -1,0 +1,34 @@
+{% extends 'layouts/login.html' %}
+{% load bootstrap %}
+{% block content %}
+  <form action="{% url 'users:login' %}" method="POST">
+    {% csrf_token %}
+    <div class="panel panel-default">
+    	<div class="panel-body box-login">
+        <h3 class="title-login">Sign in</h3>
+        <div class="form-group">
+          <label for="username" class="sr-only">Username</label>
+          <span class="fa fa-user"></span>
+          <input type="text" name="username" class="form-control input-login" placeholder="Username" required autofocus>
+        </div>
+        <div class="form-group">
+          <label for="password" class="sr-only">Password</label>
+          <span class="fa fa-lock"></span>
+          <input type="password" name="password" class="form-control input-login" placeholder="Password" required>
+        </div>
+        <div class="form-group">
+          <button class="btn btn-lg btn-success btn-block" type="submit">Login</button>
+        </div>
+        <a href="{% url 'users:register' %}" class="link-register">Create an account</a>
+    		{% if error %}
+    			<div class="alert alert-danger">{{error}}</div>
+    		{% endif %}
+      </div>
+    </div>
+    <div class="text-center">
+      <strong>Test Login:</strong><br><br>
+      Username: admin<br>
+      Password: admin<br>
+    </div>
+  </form>
+{% endblock %}
