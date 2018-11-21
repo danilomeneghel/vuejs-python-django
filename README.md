@@ -6,11 +6,13 @@ Project of an products registration using Python with Django and VueJS.
 
 - CRUD
 - Active Record
+- API RestFul
 - Login
 - Search
 - Paginate
 - Routes
 - Migrate
+- Responsive
 
 ## Requirements
 
