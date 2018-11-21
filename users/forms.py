@@ -6,6 +6,7 @@ from django.contrib.auth.models import User
 class UserModelForm(forms.ModelForm):
     User._meta.get_field('first_name').blank = False
     User._meta.get_field('email').blank = False
+    email = forms.EmailField(required=True)
     class Meta:
         model = User
         fields = ['first_name', 'email', 'username', 'password']
@@ -17,6 +18,7 @@ class UserModelForm(forms.ModelForm):
         }
         labels = {
             'first_name': 'Name',
+            'email': 'Email',
         }
 
     def save(self, commit=True):

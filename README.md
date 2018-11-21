@@ -60,7 +60,7 @@ $ python manage.py show_urls
 ## Demonstration
 
 You can see the system working by clicking the link below:<br>
-https://crud-python-django.herokuapp.com/
+https://vuejs-python-django.herokuapp.com/
 
 - Login:
     - Username: admin
