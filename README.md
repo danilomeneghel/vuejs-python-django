@@ -36,12 +36,35 @@ Project of an products registration using Python with Django and VueJS.
 $ git clone https://github.com/danilomeneghel/vuejs-python-django.git
 
 $ cd vuejs-python-django
+```
+
+Download and install Python 3: 
+
+https://www.python.org/downloads/
+
+PS: Set the environment variable pointing to the path of the Python installation.
+
+
+Download and install PIP:
+
+https://pip.pypa.io/en/stable/installing/
+
+```
+$ curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+$ python get-pip.py
+$ python -m pip install -U pip
+```
+
+After install the file requirements:
+
+```
+$ pip install -r requirements.txt
+```
+
+After everything is done, migrate datable and run the project:
+
+```
 $ python manage.py migrate
-```
-
-After everything is done, run the project:
-
-```
 $ python manage.py runserver
 ```
 
