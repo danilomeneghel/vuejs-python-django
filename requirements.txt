@@ -15,7 +15,7 @@ django-select2==6.0.2
 django-sortable-column==0.2.2
 django-toolbelt==0.0.1
 djangoajax==3.0.2
-djangorestframework==3.7.7
+djangorestframework==3.9.1
 easy-thumbnails==2.5
 gunicorn==19.9.0
 idna==2.7
