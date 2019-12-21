@@ -55,20 +55,22 @@ $ python get-pip.py
 $ python -m pip install -U pip
 ```
 
-After install the file requirements:
+Then install the requirements of the 'requirements.txt' file:
 
 ```
 $ pip install -r requirements.txt
 ```
 
-After everything is done, migrate datable and run the project:
+After everything is done, migrate database and run the project:
 
 ```
 $ python manage.py migrate
 $ python manage.py runserver
 ```
 
-Finally open http://localhost:8000/ in your browser.
+Finally, open the project in your browser: 
+
+http://localhost:8000/
 
 ## Create new modules
 
