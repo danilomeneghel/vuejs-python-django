@@ -78,6 +78,12 @@ http://localhost:8000/
 $ python manage.py startapp name_module
 ```
 
+## Create new migration (database table)
+
+```
+$ python manage.py makemigrations
+```
+
 ## Routes
 
 ```
@@ -87,11 +93,16 @@ $ python manage.py show_urls
 ## Demonstration
 
 You can see the system working by clicking the link below:<br>
-https://vuejs-python-django.herokuapp.com/
+https://vuejs-python-django.herokuapp.com
 
 - Login:
     - Username: admin
     - Password: admin
+
+## API REST
+
+Endpoint Products:<br>
+http://localhost:8000/api/product
 
 ## License
 
